@@ -6,9 +6,9 @@
 
 import React, { StrictMode } from 'react';
 // $FlowFixMe[nonstrict-import]
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 // $FlowFixMe[cannot-resolve-module]
-import { TrustlyWidget } from 'trustly-react-native-sdk';
+import { TrustlyLightbox, TrustlyWidget } from 'trustly-react-native-sdk';
 
 import type { Node } from 'react';
 
@@ -19,9 +19,14 @@ import Styles from './App.styles';
 export default function App(): Node {
   return (
     <StrictMode>
-      <View style={Styles.container}>
-        <TrustlyWidget establishData={EstablishData} style={{ height: '100%', width: '100%' }} />
-      </View>
+      <ScrollView contentContainerStyle={Styles.container}>
+        <View style={Styles.view}>
+          <TrustlyWidget establishData={EstablishData} />
+        </View>
+        <View style={Styles.view}>
+          <TrustlyLightbox establishData={EstablishData} />
+        </View>
+      </ScrollView>
     </StrictMode>
   );
 }

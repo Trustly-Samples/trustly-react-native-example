@@ -7,6 +7,7 @@ import { ACCESS_ID, ENV, ENV_HOST, MERCHANT_ID, MERCHANT_REFERENCE } from '../..
 
 const EstablishData: Establish = {
   accessId: ACCESS_ID,
+  amount: 10,
   cancelUrl: '#',
   currency: 'USD',
   customer: {

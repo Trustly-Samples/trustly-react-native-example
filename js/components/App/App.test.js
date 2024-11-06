@@ -18,6 +18,7 @@ jest.mock(
   'trustly-react-native-sdk',
   () => {
     return {
+      TrustlyLightbox: jest.fn(() => null),
       TrustlyWidget: jest.fn(() => null),
     };
   },

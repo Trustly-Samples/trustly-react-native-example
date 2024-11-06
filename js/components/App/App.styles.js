@@ -14,10 +14,16 @@ const Styles: StylesProp = StyleSheet.create({
   container: {
     alignItems: 'center',
     backgroundColor: '#fff',
-    flex: 1,
+    gap: 16,
     justifyContent: 'center',
-    paddingBlock: 100,
-    paddingInline: 25,
+    paddingBlock: 64,
+    paddingInline: 16,
+  },
+  view: {
+    borderWidth: 1,
+    borderColor: 'black',
+    height: 500,
+    width: '100%',
   },
 });
 
