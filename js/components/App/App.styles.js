@@ -22,7 +22,7 @@ const Styles: StylesProp = StyleSheet.create({
   view: {
     borderWidth: 1,
     borderColor: 'black',
-    height: 500,
+    height: '50%',
     width: '100%',
   },
 });

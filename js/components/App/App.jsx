@@ -18,15 +18,13 @@ import Styles from './App.styles';
 
 export default function App(): Node {
   return (
-    <StrictMode>
-      <ScrollView contentContainerStyle={Styles.container}>
-        <View style={Styles.view}>
-          <TrustlyWidget establishData={EstablishData} />
-        </View>
-        <View style={Styles.view}>
-          <TrustlyLightbox establishData={EstablishData} />
-        </View>
-      </ScrollView>
-    </StrictMode>
+    <View>
+      <View style={Styles.view}>
+        <TrustlyWidget establishData={EstablishData} />
+      </View>
+      <View style={Styles.view}>
+        <TrustlyLightbox establishData={EstablishData} />
+      </View>
+    </View>
   );
 }
