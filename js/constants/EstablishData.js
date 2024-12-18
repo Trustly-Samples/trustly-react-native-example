@@ -3,12 +3,11 @@
  * @flow strict
  */
 
-import type { EstablishData } from '../flow-typed/establish-data';
+import { ACCESS_ID, ENV, ENV_HOST, MERCHANT_ID, MERCHANT_REFERENCE } from '../../env';
 
-import { ACCESS_ID, ENV, ENV_HOST, MERCHANT_ID, MERCHANT_REFERENCE } from '../env';
-
-const establishData: EstablishData = {
+const EstablishData: Establish = {
   accessId: ACCESS_ID,
+  amount: 10,
   cancelUrl: '#',
   currency: 'USD',
   customer: {
@@ -37,4 +36,4 @@ const establishData: EstablishData = {
   returnUrl: '#',
 };
 
-export default establishData;
+export default EstablishData;

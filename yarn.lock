@@ -3801,6 +3801,14 @@ eslint-plugin-expo@^0.0.1:
     "@typescript-eslint/types" "^7.2.0"
     "@typescript-eslint/utils" "^7.2.0"
 
+eslint-plugin-ft-flow@^3.0.11:
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ft-flow/-/eslint-plugin-ft-flow-3.0.11.tgz#64654dad277104fc45aef8d009c4a51057ea1250"
+  integrity sha512-6ZJ4KYGYjIosCcU883zBBT1nFsKP58xrTOwguiw3/HRq0EpYAyhrF1nCGbK7V23cmKtPXMpDfl8qPupt5s5W8w==
+  dependencies:
+    lodash "^4.17.21"
+    string-natural-compare "^3.0.1"
+
 eslint-plugin-import@^2.29.1:
   version "2.31.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.31.0.tgz#310ce7e720ca1d9c0bb3f69adfd1c6bdd7d9e0e7"
@@ -4656,6 +4664,15 @@ hasown@^2.0.0, hasown@^2.0.1, hasown@^2.0.2:
   dependencies:
     function-bind "^1.1.2"
 
+hermes-eslint@^0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/hermes-eslint/-/hermes-eslint-0.25.0.tgz#beec5f0d9e9e9bdef9e4a420a79038ca7fe84143"
+  integrity sha512-D9rdrqt7dudZHI5AJKS+1vXBbxxR6Wj9J1JI7eYowYCbXUIvHclsWFy8gSuRmug2V6HSYpsiyPwP3kQs/Q/Y8w==
+  dependencies:
+    esrecurse "^4.3.0"
+    hermes-estree "0.25.0"
+    hermes-parser "0.25.0"
+
 hermes-estree@0.19.1:
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/hermes-estree/-/hermes-estree-0.19.1.tgz#d5924f5fac2bf0532547ae9f506d6db8f3c96392"
@@ -4665,6 +4682,11 @@ hermes-estree@0.23.1:
   version "0.23.1"
   resolved "https://registry.yarnpkg.com/hermes-estree/-/hermes-estree-0.23.1.tgz#d0bac369a030188120ee7024926aabe5a9f84fdb"
   integrity sha512-eT5MU3f5aVhTqsfIReZ6n41X5sYn4IdQL0nvz6yO+MMlPxw49aSARHLg/MSehQftyjnrE8X6bYregzSumqc6cg==
+
+hermes-estree@0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/hermes-estree/-/hermes-estree-0.25.0.tgz#fd926ebf3d0d3441a934f19ef3d3d3d4145b1d71"
+  integrity sha512-xjILoUIyOpLoOHqj8UJs/HNYQ279IfLKTTv9nmXKNT2+QKT/TQF9AyQFrRMo+3xwZoO7k4azocYpCzA1cSvBDg==
 
 hermes-parser@0.19.1:
   version "0.19.1"
@@ -4679,6 +4701,13 @@ hermes-parser@0.23.1:
   integrity sha512-oxl5h2DkFW83hT4DAUJorpah8ou4yvmweUzLJmmr6YV2cezduCdlil1AvU/a/xSsAFo4WUcNA4GoV5Bvq6JffA==
   dependencies:
     hermes-estree "0.23.1"
+
+hermes-parser@0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/hermes-parser/-/hermes-parser-0.25.0.tgz#634934533a956e392ae0988421e4b0315e30351e"
+  integrity sha512-CeAdhgMfbZcrYh+HHKVKsj7VNhOTr0jiLFlcVVoRORbZ/Nr4J90WjEq2CZoahgH15/DYY/VBhuLqpIzJqfdBEQ==
+  dependencies:
+    hermes-estree "0.25.0"
 
 hermes-profile-transformer@^0.0.6:
   version "0.0.6"
@@ -7875,6 +7904,11 @@ string-length@^5.0.1:
     char-regex "^2.0.0"
     strip-ansi "^7.0.1"
 
+string-natural-compare@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/string-natural-compare/-/string-natural-compare-3.0.1.tgz#7a42d58474454963759e8e8b7ae63d71c1e7fdf4"
+  integrity sha512-n3sPwynL1nwKi3WJ6AIsClwBMa0zTi54fn2oLU6ndfTSIO05xaznjSf15PcBZU6FNWbmN5Q6cxT4V5hGvB4taw==
+
 "string-width-cjs@npm:string-width@^4.2.0":
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
@@ -8304,7 +8338,7 @@ trim-right@^1.0.1:
   integrity sha512-WZGXGstmCWgeevgTL54hrCuw1dyMQIzWy7ZfqRJfSmJZBwklI15egmQytFP6bPidmw3M8d5yEowl1niq4vmqZw==
 
 trustly-react-native-sdk@../trustly-react-native:
-  version "0.0.1"
+  version "0.0.2"
 
 ts-api-utils@^1.3.0:
   version "1.3.0"

@@ -1,6 +1,6 @@
 // https://docs.expo.dev/guides/using-eslint/
 module.exports = {
-  extends: ['expo', 'prettier'],
+  extends: ['expo', 'plugin:ft-flow/recommended', 'prettier'],
   overrides: [
     {
       // Tests
@@ -8,7 +8,8 @@ module.exports = {
       extends: ['plugin:testing-library/react'],
     },
   ],
-  plugins: ['prettier'],
+  parser: 'hermes-eslint',
+  plugins: ['ft-flow', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
   },

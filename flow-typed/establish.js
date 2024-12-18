@@ -63,7 +63,7 @@ type Verification = {
   verifyCustomer: boolean,
 };
 
-export type EstablishData = {
+export type Establish = {
   accessId: string,
   account?: Account,
   address?: Address,
