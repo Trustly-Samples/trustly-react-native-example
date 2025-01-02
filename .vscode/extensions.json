@@ -1,9 +1,0 @@
-{
-  "recommendations": [
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
-    "flowtype.flow-for-vscode",
-    "msjsdiag.vscode-react-native",
-    "orta.vscode-jest"
-  ]
-}
