@@ -33,7 +33,9 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
-env.js
-
 # tests
 coverage/
+
+# Lock files
+package-lock.json
+yarn.lock
