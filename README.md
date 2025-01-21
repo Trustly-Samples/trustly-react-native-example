@@ -15,52 +15,31 @@ Note: The SDK package will be published in an NPM repository later. For now, ple
 
 ### Requirements
 
-- **CocoaPods** 1.15
 - **Node** 20
-- **Ruby** 3.3.5
-- **Yarn** 1.22.22
 
 ### Setup
 
-- Copy the `env.example.js` file to a new `env.js` file and fill out your environment variables.
-- (Optional) Edit the payload information in the `establish-data.js` file.
+- Open the `env.js` file and fill out your environment variables.
+- (Optional) Edit the payload information in the `EstablishData.tsx` file.
 
 ### SDK Installation and Update
 
-For the following commands, remember to replace these placeholders:
-
-- `$APP_FOLDER`: Local path of this **Example** folder
-- `$SDK_FOLDER`: Local path of the **SDK** folder
-
-#### Clean previous builds (if any)
+Clean previous builds (if any)
 
 ```shell
-cd $APP_FOLDER
-rm -rfv node_modules && cd ios && rm -rfv build
+rm -rfv node_modules
 ```
 
-#### (Re)install packages
+After that install all the dependencies:
 
 ```shell
-cd $APP_FOLDER
-yarn install
-```
-
-#### Build
-
-```shell
-node ${APP_FOLDER}/node_modules/react-native/scripts/generate-codegen-artifacts.js --path ${APP_FOLDER}/ --outputPath ${SDK_FOLDER}/generated/ --targetPlatform all
-
-cd $APP_FOLDER
-cd android && ./gradlew generateCodegenArtifactsFromSchema
-cd ios && RCT_NEW_ARCH_ENABLED=1 bundle exec pod install
+npm install
 ```
 
 ### Running
 
 ```shell
-cd $APP_FOLDER
-npx expo run
+npm run start
 ```
 
 ## Contributing

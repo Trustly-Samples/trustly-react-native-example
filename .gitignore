@@ -1,21 +1,41 @@
-dist/
-.expo/
+# dependencies
 node_modules/
+
+# Expo
+.expo/
+dist/
 web-build/
+expo-env.d.ts
 
-npm-debug.*
-
-*.jks
-*.key
-*.mobileprovision
+# Native
 *.orig.*
+*.jks
 *.p8
 *.p12
+*.key
+*.mobileprovision
 
-env.js
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
 
 # macOS
 .DS_Store
+*.pem
 
-# Tests
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
+# tests
 coverage/
+
+# Lock files
+package-lock.json
+yarn.lock
