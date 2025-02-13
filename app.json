@@ -1,24 +1,4 @@
 {
-  "expo": {
-    "name": "trustly-react-native-example",
-    "slug": "trustly-react-native-example",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "scheme": "trustly-react-native-example",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.trustly.react-native-example"
-    },
-    "android": {
-      "package": "com.trustly.reactnativeexample"
-    },
-    "plugins": [
-      "expo-router"
-    ],
-    "experiments": {
-      "typedRoutes": true
-    }
-  }
+  "name": "TrustlyReactNativeExample",
+  "displayName": "TrustlyReactNativeExample"
 }
