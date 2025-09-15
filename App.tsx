@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, View, Button, Text } from 'react-native';
 import { TrustlyWidget, TrustlyLightbox } from 'trustly-react-native';
 
 export default function App() {
-  const [openTrustlyLightbox, setOpenTrustlyLightbox] = useState(false);
-  const [paymentProviderId, setPaymentProviderId] = useState(null);
+  const [screen, setScreen] = useState<'home' | 'success' | 'cancel'>('home');
+  const [openLightbox, setOpenLightbox] = useState(false);
+  const [nextScreen, setNextScreen] = useState<'success' | 'cancel' | null>(null);
 
-  const EstablishData = {
+  const establishData = {
     accessId: "A48B73F694C4C8EE6306",
     merchantId: "110005514",
     currency: "USD",
@@ -16,56 +17,71 @@ export default function App() {
     returnUrl: "/returnUrl",
     cancelUrl: "/cancelUrl",
     requestSignature: "HT5mVOqBXa8ZlvgX2USmPeLns5o=",
-    customer: {
-      name: "John",
-      address: {
-        country: "US"
-      }
-    },
-    metadata: {
-      urlScheme: "demoapp://",
-    },
+    customer: { name: "John", address: { country: "US" } },
+    metadata: { urlScheme: "trustlyrnexample://" },
     description: "First Data Mobile Test",
-    env: "sandbox"
+    env: "122.132.142.28",
   };
 
-  // Quando o usuário seleciona o banco no TrustlyWidget
-  const handleBankSelected = (bankId: any) => {
-    setPaymentProviderId(bankId);
-    setOpenTrustlyLightbox(true);
+  const handleReturn = () => {
+    console.log('Return from Lightbox');
+    setNextScreen('success');  
+    setOpenLightbox(false);    
   };
 
-  // Quando o Lightbox retorna um resultado (sucesso, cancelado, etc)
-  const handleReturn = (returnParameters: any) => {
-    console.log('Returned:', returnParameters);
-    setOpenTrustlyLightbox(false);
-    setPaymentProviderId(null);
+  const handleCancel = () => {
+    setNextScreen('cancel');   
+    setOpenLightbox(false);  
   };
 
-  const handleCancel = (returnParameters: any) => {
-    console.log('Cancelled:', returnParameters);
-    setOpenTrustlyLightbox(false);
-    setPaymentProviderId(null);
-  };
+  React.useEffect(() => {
+    if (!openLightbox && nextScreen) {
+      setScreen(nextScreen);
+      setNextScreen(null);
+    }
+  }, [openLightbox, nextScreen]);
 
-  // Botão para abrir Lightbox diretamente (sem passar banco)
-  const handleButtonPress = () => {
-    setOpenTrustlyLightbox(true);
-  };
+  if (screen === 'success') {
+    return (
+      <View style={styles.screen}>
+        <Text style={styles.title}>Payment completed successfully!</Text>
+        <Button title="Back to Home" onPress={() => setScreen('home')} />
+      </View>
+    );
+  }
 
+  if (screen === 'cancel') {
+    return (
+      <View style={styles.screen}>
+        <Text style={styles.title}>Payment was cancelled.</Text>
+        <Button title="Back to Home" onPress={() => setScreen('home')} />
+      </View>
+    );
+  }
+
+  // Home Screen
   return (
-    <View style={styles.widgetContainer}>
+    <View style={styles.container}>
+
+      {/* Widget + Lightbox integration */}
       <TrustlyWidget 
-        establishData={EstablishData} 
-        onBankSelected={handleBankSelected} 
+        establishData={establishData} 
+        onBankSelected={(bankId: string, updatedEstablishData: object) => {
+          return <TrustlyLightbox
+            establishData={updatedEstablishData}
+            paymentProviderId={bankId}
+            onReturn={handleReturn}
+            onCancel={handleCancel}
+          />
+        }} 
       />
 
-      <Button title="Go to Lightbox" onPress={handleButtonPress} />
+      {/* Lightbox integration */}
+      <Button title="Open Lightbox" onPress={() => setOpenLightbox(true)} />
 
-      {openTrustlyLightbox && (
+      {openLightbox && (
         <TrustlyLightbox
-          establishData={EstablishData}
-          paymentProviderId={paymentProviderId}
+          establishData={establishData}
           onReturn={handleReturn}
           onCancel={handleCancel}
         />
@@ -75,9 +91,21 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  widgetContainer: {
+  container: {
     flex: 1,
+    marginTop: 50,
     padding: 20,
     backgroundColor: '#fff',
+  },
+  screen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  title: {
+    fontSize: 20,
+    marginBottom: 20,
+    textAlign: 'center',
   },
 });

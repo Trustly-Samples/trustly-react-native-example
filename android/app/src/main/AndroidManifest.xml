@@ -21,6 +21,17 @@
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
+
+        <intent-filter>
+          <action android:name="android.intent.action.VIEW" />
+          <category android:name="android.intent.category.DEFAULT" />
+          <category android:name="android.intent.category.BROWSABLE" />
+
+          <!-- URL Scheme -->
+          <data android:scheme="trustlyrnexample" android:host="return" />
+          <data android:scheme="trustlyrnexample" android:host="cancel" />
+
+        </intent-filter>
       </activity>
     </application>
 </manifest>
