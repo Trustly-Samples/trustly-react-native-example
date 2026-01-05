@@ -18,7 +18,7 @@ export default function App() {
     cancelUrl: "/cancelUrl",
     requestSignature: "HT5mVOqBXa8ZlvgX2USmPeLns5o=",
     customer: { name: "John", address: { country: "US" } },
-    metadata: { 
+    metadata: {
       urlScheme: "trustlyrnexample://", 
       universalLink: "https://alpha-merchant.tools.devent.trustly.one/start/oauth/app/" 
     },
