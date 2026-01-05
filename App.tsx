@@ -18,9 +18,12 @@ export default function App() {
     cancelUrl: "/cancelUrl",
     requestSignature: "HT5mVOqBXa8ZlvgX2USmPeLns5o=",
     customer: { name: "John", address: { country: "US" } },
-    metadata: { urlScheme: "trustlyrnexample://" },
+    metadata: { 
+      urlScheme: "trustlyrnexample://", 
+      universalLink: "https://alpha-merchant.tools.devent.trustly.one/start/oauth/app/" 
+    },
     description: "First Data Mobile Test",
-    env: "122.132.142.28",
+    env: "sandbox",
   };
 
   const handleReturn = () => {
