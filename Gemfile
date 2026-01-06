@@ -14,3 +14,6 @@ gem 'bigdecimal'
 gem 'logger'
 gem 'benchmark'
 gem 'mutex_m'
+
+# Fix for CVE-2025-11953
+gem 'rexml', '>= 3.4.4'
