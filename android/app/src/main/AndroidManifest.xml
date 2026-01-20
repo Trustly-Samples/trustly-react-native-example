@@ -28,9 +28,7 @@
           <category android:name="android.intent.category.BROWSABLE" />
 
           <!-- URL Scheme -->
-          <data android:scheme="trustlyrnexample" android:host="return" />
-          <data android:scheme="trustlyrnexample" android:host="cancel" />
-
+          <data android:scheme="trustlyrnexample" />
         </intent-filter>
         <intent-filter android:autoVerify="true">
           <action android:name="android.intent.action.VIEW" />

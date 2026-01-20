@@ -20,10 +20,11 @@ export default function App() {
     customer: { name: "John", address: { country: "US" } },
     metadata: {
       urlScheme: "trustlyrnexample://", 
-      universalLink: "https://alpha-merchant.tools.devent.trustly.one/start/oauth/app/" 
+      universalLink: "https://alpha-merchant.tools.devent.trustly.one/start/oauth/app/",
+      appLink: "intent://alpha-merchant.tools.devent.trustly.one/start/oauth/app/#Intent;scheme=https;end",
     },
     description: "First Data Mobile Test",
-    env: "sandbox",
+    env: "192.168.3.57",
   };
 
   const handleReturn = () => {
