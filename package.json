@@ -15,7 +15,7 @@
     "react-native": "0.79.2",
     "react-native-inappbrowser-reborn": "^3.7.0",
     "react-native-webview": "^13.14.1",
-    "trustly-react-native": "file:libs/trustly-react-native-1.0.0.tgz"
+    "@trustlyinc/trustly-react-native": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
