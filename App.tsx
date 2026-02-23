@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Button, Text } from 'react-native';
-import { TrustlyWidget, TrustlyLightbox } from 'trustly-react-native';
+import { StyleSheet, View, Button, Text, useColorScheme } from 'react-native';
+import { TrustlyWidget, TrustlyLightbox } from '@trustlyinc/trustly-react-native';
 
 export default function App() {
+  const colorScheme = useColorScheme();
+  const isDarkTheme = colorScheme === 'dark';
+  const backgroundColor = isDarkTheme ? '#000' : '#fff';
+  const textColor = isDarkTheme ? '#fff' : '#000';
   const [screen, setScreen] = useState<'home' | 'success' | 'cancel'>('home');
   const [openLightbox, setOpenLightbox] = useState(false);
   const [nextScreen, setNextScreen] = useState<'success' | 'cancel' | null>(null);
@@ -19,23 +23,33 @@ export default function App() {
     requestSignature: "HT5mVOqBXa8ZlvgX2USmPeLns5o=",
     customer: { name: "John", address: { country: "US" } },
     metadata: {
+      integrationContenxt: "InAppBrowser",
       urlScheme: "trustlyrnexample://", 
       universalLink: "https://alpha-merchant.tools.devent.trustly.one/start/oauth/app/",
       appLink: "intent://alpha-merchant.tools.devent.trustly.one/start/oauth/app/#Intent;scheme=https;end",
     },
     description: "First Data Mobile Test",
-    env: "192.168.3.57",
+    env: "sandbox",
   };
 
   const handleReturn = () => {
     console.log('Return from Lightbox');
-    setNextScreen('success');  
-    setOpenLightbox(false);    
+    setNextScreen('success');
+    setOpenLightbox(false);
   };
 
   const handleCancel = () => {
-    setNextScreen('cancel');   
-    setOpenLightbox(false);  
+    setNextScreen('cancel');
+    setOpenLightbox(false);
+  };
+
+  const handleBankSelected = (bankId: string, updatedEstablishData: object) => {
+    return <TrustlyLightbox
+      establishData={updatedEstablishData}
+      paymentProviderId={bankId}
+      onReturn={handleReturn}
+      onCancel={handleCancel}
+    />;
   };
 
   React.useEffect(() => {
@@ -47,8 +61,8 @@ export default function App() {
 
   if (screen === 'success') {
     return (
-      <View style={styles.screen}>
-        <Text style={styles.title}>Payment completed successfully!</Text>
+      <View style={[styles.screen, { backgroundColor }]}>
+        <Text style={[styles.title, { color: textColor }]}>Payment completed successfully!</Text>
         <Button title="Back to Home" onPress={() => setScreen('home')} />
       </View>
     );
@@ -56,8 +70,8 @@ export default function App() {
 
   if (screen === 'cancel') {
     return (
-      <View style={styles.screen}>
-        <Text style={styles.title}>Payment was cancelled.</Text>
+      <View style={[styles.screen, { backgroundColor }]}>
+        <Text style={[styles.title, { color: textColor }]}>Payment was cancelled.</Text>
         <Button title="Back to Home" onPress={() => setScreen('home')} />
       </View>
     );
@@ -65,19 +79,11 @@ export default function App() {
 
   // Home Screen
   return (
-    <View style={styles.container}>
-
+    <View style={[styles.container, { backgroundColor }]}>
       {/* Widget + Lightbox integration */}
-      <TrustlyWidget 
-        establishData={establishData} 
-        onBankSelected={(bankId: string, updatedEstablishData: object) => {
-          return <TrustlyLightbox
-            establishData={updatedEstablishData}
-            paymentProviderId={bankId}
-            onReturn={handleReturn}
-            onCancel={handleCancel}
-          />
-        }} 
+      <TrustlyWidget
+        establishData={establishData}
+        onBankSelected={handleBankSelected}
       />
 
       {/* Lightbox integration */}
@@ -99,7 +105,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 50,
     padding: 20,
-    backgroundColor: '#fff',
   },
   screen: {
     flex: 1,
