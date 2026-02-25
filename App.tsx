@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Button, Text, useColorScheme } from 'react-native';
+import { StyleSheet, View, Button, Text, useColorScheme, Platform } from 'react-native';
 import { TrustlyWidget, TrustlyLightbox } from '@trustlyinc/trustly-react-native';
 
 export default function App() {
@@ -24,9 +24,11 @@ export default function App() {
     customer: { name: "John", address: { country: "US" } },
     metadata: {
       integrationContenxt: "InAppBrowser",
-      urlScheme: "trustlyrnexample://", 
-      universalLink: "https://alpha-merchant.tools.devent.trustly.one/start/oauth/app/",
-      appLink: "intent://alpha-merchant.tools.devent.trustly.one/start/oauth/app/#Intent;scheme=https;end",
+      urlScheme: "trustlyrnexample://",
+      deepLinkStrategy: "deeplink-url",
+      deepLinkUrl: Platform.OS === "android" ? 
+      "intent://alpha-merchant.tools.devent.trustly.one/start/oauth/app/#Intent;scheme=https;end" : 
+      "https://alpha-merchant.tools.devent.trustly.one/start/oauth/app/",
     },
     description: "First Data Mobile Test",
     env: "sandbox",
