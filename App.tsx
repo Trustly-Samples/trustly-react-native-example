@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Button, Text, useColorScheme } from 'react-native';
+import { StyleSheet, View, Button, Text, useColorScheme, Platform } from 'react-native';
 import { TrustlyWidget, TrustlyLightbox } from '@trustlyinc/trustly-react-native';
 
 export default function App() {
@@ -12,19 +12,26 @@ export default function App() {
   const [nextScreen, setNextScreen] = useState<'success' | 'cancel' | null>(null);
 
   const establishData = {
-    accessId: 'A48B73F694C4C8EE6306',
-    merchantId: '110005514',
-    currency: 'USD',
-    amount: '1.00',
-    merchantReference: 'cac73df7-52b4-47d7-89d3-9628d4cfb65e',
-    paymentType: 'Retrieval',
-    returnUrl: '/returnUrl',
-    cancelUrl: '/cancelUrl',
-    requestSignature: 'HT5mVOqBXa8ZlvgX2USmPeLns5o=',
-    customer: { name: 'John', address: { country: 'US' } },
-    metadata: { integrationContenxt: 'InAppBrowser', urlScheme: 'trustlyrnexample://' },
-    description: 'First Data Mobile Test',
-    env: 'sandbox',
+    accessId: "A48B73F694C4C8EE6306",
+    merchantId: "110005514",
+    currency: "USD",
+    amount: "1.00",
+    merchantReference: "cac73df7-52b4-47d7-89d3-9628d4cfb65e",
+    paymentType: "Retrieval",
+    returnUrl: "/returnUrl",
+    cancelUrl: "/cancelUrl",
+    requestSignature: "HT5mVOqBXa8ZlvgX2USmPeLns5o=",
+    customer: { name: "John", address: { country: "US" } },
+    metadata: {
+      integrationContenxt: "InAppBrowser",
+      urlScheme: "trustlyrnexample://",
+      deepLinkStrategy: "deeplink-url",
+      deepLinkUrl: Platform.OS === "android" ? 
+      "intent://alpha-merchant.tools.devent.trustly.one/start/oauth/app/#Intent;scheme=https;end" : 
+      "https://alpha-merchant.tools.devent.trustly.one/start/oauth/app/",
+    },
+    description: "First Data Mobile Test",
+    env: "sandbox",
   };
 
   const handleReturn = () => {
