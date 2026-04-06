@@ -22,24 +22,6 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
 
-        <intent-filter>
-          <action android:name="android.intent.action.VIEW" />
-          <category android:name="android.intent.category.DEFAULT" />
-          <category android:name="android.intent.category.BROWSABLE" />
-
-          <!-- URL Scheme -->
-          <data android:scheme="trustlyrnexample" />
-        </intent-filter>
-        <intent-filter android:autoVerify="true">
-          <action android:name="android.intent.action.VIEW" />
-          <category android:name="android.intent.category.DEFAULT" />
-          <category android:name="android.intent.category.BROWSABLE" />
-
-          <!-- App Links -->
-          <data android:scheme="https" />
-          <data android:host="alpha-merchant.tools.devent.trustly.one" />
-          <data android:path="/start/oauth/app/" />
-        </intent-filter>
       </activity>
     </application>
 </manifest>
