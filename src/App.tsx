@@ -44,7 +44,9 @@ const ResultScreen = ({ title, returnParameters, onBackToWidget }) => (
 );
 
 export default class App extends Component {
-  trustlyWebView = null;
+
+  trustlyWebView: WebView | null = null;
+  deepLinkEventListener: any = null;
 
   // Initialize payment data
   establishData: EstablishData = {
@@ -75,9 +77,18 @@ export default class App extends Component {
     returnParameters: '',
   };
 
-  constructor(props) {
-    super(props);
+  componentDidMount() {
+    this.deepLinkEventListener = Linking.addEventListener('url', this.handleDeepLink);
   }
+
+  componentWillUnmount() {
+    this.deepLinkEventListener.remove() 
+  }
+
+  // Handle the deep link URL here
+  handleDeepLink = () => {
+    InAppBrowser.closeAuth(); // Close the InAppBrowser when a deep link is detected
+  };
 
   // Open the provided URL in InAppBrowser or default browser if not available
   async openLink(url: string) {
@@ -155,9 +166,7 @@ export default class App extends Component {
 
   // Handle the OAuth result
   handleOAuthResult = (result: any) => {
-    if (result.type === 'success') {
-      this.trustlyWebView.injectJavaScript('window.Trustly.proceedToChooseAccount();'); // Proceed with the transaction
-    }
+    this.trustlyWebView.injectJavaScript('window.Trustly.proceedToChooseAccount();'); // Proceed with the transaction
   };
 
   // Update the amount when the user inputs a new value
