@@ -10,12 +10,13 @@
     "test": "jest"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^2.1.2",
+    "@react-native-async-storage/async-storage": "^2.2.0",
+    "@trustlyinc/trustly-react-native": "file:libs/trustlyinc-trustly-react-native-1.0.1.tgz",
     "react": "19.0.0",
-    "react-native": "0.79.2",
-    "react-native-inappbrowser-reborn": "^3.7.0",
-    "react-native-webview": "^13.14.1",
-    "@trustlyinc/trustly-react-native": "^1.0.1"
+    "react-native": "0.79.7",
+    "react-native-get-random-values": "^2.0.0",
+    "react-native-inappbrowser-reborn": "^3.7.1",
+    "react-native-webview": "^13.16.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
